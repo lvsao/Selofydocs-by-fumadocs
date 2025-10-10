@@ -82,32 +82,33 @@ export function AppSwitcher() {
             isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'
           }`}
         >
-        <div className="p-1">
-          {apps.map(app => (
-            <button
-              key={app.slug}
-              onClick={() => handleSwitch(app.slug)}
-              className={`w-full flex items-center gap-2 px-3 py-2 rounded-sm hover:bg-fd-accent transition-colors text-left ${
-                app.slug === currentSlug ? 'bg-fd-accent' : ''
-              }`}
-            >
-              {app.iconUrl ? (
-                <Image
-                  src={app.iconUrl}
-                  alt={app.name}
-                  width={20}
-                  height={20}
-                  className="w-5 h-5"
-                />
-              ) : (
-                <span className="text-lg">{app.iconEmoji}</span>
-              )}
-              <span className="font-medium flex-1">{app.name}</span>
-              {app.slug === currentSlug && (
-                <span className="ml-auto text-fd-primary">✓</span>
-              )}
-            </button>
-          ))}
+          <div className="p-1">
+            {apps.map(app => (
+              <button
+                key={app.slug}
+                onClick={() => handleSwitch(app.slug)}
+                className={`w-full flex items-center gap-2 px-3 py-2 rounded-sm hover:bg-fd-accent transition-colors text-left ${
+                  app.slug === currentSlug ? 'bg-fd-accent' : ''
+                }`}
+              >
+                {app.iconUrl ? (
+                  <Image
+                    src={app.iconUrl}
+                    alt={app.name}
+                    width={20}
+                    height={20}
+                    className="w-5 h-5"
+                  />
+                ) : (
+                  <span className="text-lg">{app.iconEmoji}</span>
+                )}
+                <span className="font-medium flex-1">{app.name}</span>
+                {app.slug === currentSlug && (
+                  <span className="ml-auto text-fd-primary">✓</span>
+                )}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>
