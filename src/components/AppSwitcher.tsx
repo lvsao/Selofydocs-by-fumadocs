@@ -46,41 +46,42 @@ export function AppSwitcher() {
   }
 
   return (
-    <div className="relative w-full px-3 py-2">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center gap-2 px-3 py-2 rounded-md hover:bg-accent transition-all duration-200 border"
-        aria-label="Switch app"
-      >
-        {currentApp.iconUrl ? (
-          <Image
-            src={currentApp.iconUrl}
-            alt={currentApp.name}
-            width={20}
-            height={20}
-            className="w-5 h-5"
+    <div className="w-full px-3 py-2">
+      <div className="relative">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full flex items-center gap-2 px-3 py-2 rounded-md hover:bg-accent transition-all duration-200 border"
+          aria-label="Switch app"
+        >
+          {currentApp.iconUrl ? (
+            <Image
+              src={currentApp.iconUrl}
+              alt={currentApp.name}
+              width={20}
+              height={20}
+              className="w-5 h-5"
+            />
+          ) : (
+            <span className="text-lg">{currentApp.iconEmoji}</span>
+          )}
+          <span className="font-medium flex-1 text-left">{currentApp.name}</span>
+          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ease-in-out ${isOpen ? 'rotate-180' : ''}`} />
+        </button>
+
+        {/* Backdrop */}
+        {isOpen && (
+          <div
+            className="fixed inset-0 z-40"
+            onClick={() => setIsOpen(false)}
           />
-        ) : (
-          <span className="text-lg">{currentApp.iconEmoji}</span>
         )}
-        <span className="font-medium flex-1 text-left">{currentApp.name}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ease-in-out ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
 
-      {/* Backdrop */}
-      {isOpen && (
+        {/* Dropdown - 宽度与按钮完全一致 */}
         <div
-          className="fixed inset-0 z-40"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-
-      {/* Dropdown - 完全不透明，宽度与search bar完全一致 */}
-      <div
-        className={`absolute top-full left-0 right-0 mt-2 mx-3 bg-fd-background dark:bg-fd-background border border-fd-border rounded-md shadow-xl z-50 transition-all duration-200 ease-in-out origin-top ${
-          isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'
-        }`}
-      >
+          className={`absolute top-full left-0 right-0 mt-2 bg-fd-background dark:bg-fd-background border border-fd-border rounded-md shadow-xl z-50 transition-all duration-200 ease-in-out origin-top ${
+            isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'
+          }`}
+        >
         <div className="p-1">
           {apps.map(app => (
             <button
