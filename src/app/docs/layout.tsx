@@ -1,30 +1,43 @@
+'use client'
+
 import { DocsLayout } from 'fumadocs-ui/layouts/docs'
 import type { ReactNode } from 'react'
 import { sources } from '@/lib/source'
 import Image from 'next/image'
 import { AppSwitcher } from '@/components/AppSwitcher'
+import { usePathname } from 'next/navigation'
 
 export default function Layout({ children }: { children: ReactNode }) {
-  // 使用 max-ai-alt-text 作为默认源
-  const defaultSource = sources['max-ai-alt-text']
+  const pathname = usePathname()
+
+  // 从路径动态获取当前app的源
+  const getCurrentSource = () => {
+    if (pathname.startsWith('/docs/coming-soon')) {
+      return sources['coming-soon']
+    }
+    return sources['max-ai-alt-text']
+  }
+
+  const currentSource = getCurrentSource()
 
   return (
     <DocsLayout
-      tree={defaultSource.pageTree}
+      tree={currentSource.pageTree}
       nav={{
         title: (
-          <div className="flex items-center gap-3">
-            <Image
-              src="https://image.selofy.com/cdn-cgi/image/format=auto,quality=85,height=32/selofy/alttext/selofy_logo.svg"
-              alt="Selofy"
-              width={120}
-              height={32}
-              className="h-8 w-auto"
-            />
-            <AppSwitcher />
-          </div>
+          <Image
+            src="https://image.selofy.com/cdn-cgi/image/format=auto,quality=85,height=32/selofy/alttext/selofy_logo.svg"
+            alt="Selofy"
+            width={120}
+            height={32}
+            className="h-8 w-auto"
+          />
         ),
         url: '/docs/max-ai-alt-text',
+      }}
+      sidebar={{
+        banner: <AppSwitcher />,
+        defaultOpenLevel: 0,
       }}
       links={[
         {
@@ -38,9 +51,6 @@ export default function Layout({ children }: { children: ReactNode }) {
           external: true,
         },
       ]}
-      sidebar={{
-        defaultOpenLevel: 0,
-      }}
     >
       <div className="flex flex-col min-h-screen">
         <div className="flex-1">{children}</div>

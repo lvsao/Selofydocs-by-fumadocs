@@ -3,23 +3,25 @@
 import { useRouter, usePathname } from 'next/navigation'
 import { ChevronDown } from 'lucide-react'
 import { useState } from 'react'
+import Image from 'next/image'
 
 interface App {
   name: string
   slug: string
-  icon?: string
+  iconUrl?: string
+  iconEmoji?: string
 }
 
 const apps: App[] = [
   {
     name: 'Max AI: Alt Text',
     slug: 'max-ai-alt-text',
-    icon: '🤖',
+    iconUrl: 'https://image.selofy.com/cdn-cgi/image/format=webp,quality=60,width=40/selofy/alttext/Shopify%20app.svg',
   },
   {
     name: 'Coming Soon',
     slug: 'coming-soon',
-    icon: '🚀',
+    iconEmoji: '🚀',
   },
 ]
 
@@ -44,14 +46,24 @@ export function AppSwitcher() {
   }
 
   return (
-    <div className="relative">
+    <div className="relative w-full px-3 py-2">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-accent transition-colors"
+        className="w-full flex items-center gap-2 px-3 py-2 rounded-md hover:bg-accent transition-colors border"
         aria-label="Switch app"
       >
-        <span className="text-lg">{currentApp.icon}</span>
-        <span className="font-medium">{currentApp.name}</span>
+        {currentApp.iconUrl ? (
+          <Image
+            src={currentApp.iconUrl}
+            alt={currentApp.name}
+            width={20}
+            height={20}
+            className="w-5 h-5"
+          />
+        ) : (
+          <span className="text-lg">{currentApp.iconEmoji}</span>
+        )}
+        <span className="font-medium flex-1 text-left">{currentApp.name}</span>
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
@@ -64,7 +76,7 @@ export function AppSwitcher() {
           />
 
           {/* Dropdown */}
-          <div className="absolute top-full left-0 mt-2 w-56 bg-popover border rounded-md shadow-lg z-50">
+          <div className="absolute top-full left-3 right-3 mt-2 bg-popover border rounded-md shadow-lg z-50">
             <div className="p-1">
               {apps.map(app => (
                 <button
@@ -74,8 +86,18 @@ export function AppSwitcher() {
                     app.slug === currentSlug ? 'bg-accent' : ''
                   }`}
                 >
-                  <span className="text-lg">{app.icon}</span>
-                  <span className="font-medium">{app.name}</span>
+                  {app.iconUrl ? (
+                    <Image
+                      src={app.iconUrl}
+                      alt={app.name}
+                      width={20}
+                      height={20}
+                      className="w-5 h-5"
+                    />
+                  ) : (
+                    <span className="text-lg">{app.iconEmoji}</span>
+                  )}
+                  <span className="font-medium flex-1">{app.name}</span>
                   {app.slug === currentSlug && (
                     <span className="ml-auto text-primary">✓</span>
                   )}
