@@ -1,0 +1,146 @@
+---
+title: Frequently Asked Questions
+description: Common questions about Max AI Alt Text Optimizer
+---
+
+# ❓ Frequently Asked Questions
+
+Find answers to common questions about using Max AI Alt Text Optimizer.
+
+---
+
+## 🚀 Getting Started
+
+### How often should I rescan my store?
+Rescan whenever you add new products, collections, or blog posts. With automation enabled, the app will automatically scan and optimize new images based on your schedule (daily or weekly depending on your plan).
+
+### How long does a full store scan take?
+Scan time depends on your store size:
+- **Small stores** (< 100 products): 10-30 seconds
+- **Medium stores** (100-500 products): 30-90 seconds
+- **Large stores** (500-2000 products): 1-3 minutes
+- **Very large stores** (2000+ products): 3-10 minutes
+
+The app shows real-time progress during scanning, and you can navigate away - scans continue in the background.
+
+---
+
+## 🤖 AI Optimization
+
+### How do you leverage AI to power Alt Text optimization?
+We utilize cutting-edge AI technology in two powerful ways:
+
+1. **SOTA Multi-Modal Vision Model**: We employ GLM-4.5V, one of the most advanced open-source vision-language models available. GLM-4.5V achieves state-of-the-art performance on 23 out of 28 benchmark tasks.
+
+2. **Dynamic Context-Aware AI Prompting**: Our AI doesn't just "see" your images - it understands your business. For each scenario (Products, Collections, Blogs), we employ specialized prompt engineering that analyzes visual content, business context, and SEO best practices.
+
+### How can I improve the quality of AI-generated alt text?
+To get the best results:
+
+1. **Use clear, high-quality images** - The AI can better understand well-lit, focused product photos
+2. **Write accurate product information** - Complete your product titles, descriptions, and variant names with precise text
+3. **Set up your store details**:
+   - **Store name**: Settings → General → Store details
+   - **Meta description**: Sales channels → Online Store → Preferences
+
+### What languages does Max AI support for alt text generation?
+Max AI supports **18 languages** for alt text generation. The AI automatically detects your product information's language and generates alt text in the same language:
+
+🇬🇧 English • 🇨🇳 Chinese • 🇯🇵 Japanese • 🇰🇷 Korean • 🇫🇷 French • 🇩🇪 German • 🇪🇸 Spanish • 🇷🇺 Russian • 🇹🇭 Thai • 🇻🇳 Vietnamese • 🇮🇩 Indonesian • 🇸🇦 Arabic • 🇮🇱 Hebrew • 🇮🇳 Hindi • 🇧🇩 Bengali • 🇮🇹 Italian • 🇵🇹 Portuguese • 🇳🇱 Dutch
+
+---
+
+## ⚙️ Optimization Methods
+
+### What's the difference between Dynamic Format and AI Optimize?
+- **Dynamic Format**: Fast, template-based generation using variables you configure (e.g., "[Product Title] - [Variant] - Brand Name"). Best for consistent, structured alt text.
+
+- **AI Optimize**: Our AI analyzes the actual image content AND business context to generate unique, contextual, SEO-optimized alt text. **This is the recommended method for maximum SEO impact**.
+
+### Which optimization method should I use?
+We strongly recommend **AI Optimize** for best results because it:
+- Analyzes actual image content for accurate descriptions
+- Incorporates business context (product info, collections, etc.)
+- Follows Google SEO best practices automatically
+- Generates unique, specific alt text for each image
+
+Use **Dynamic Format** when:
+- Budget constraints (AI quota limitations)
+- Highly standardized product catalogs
+- Quick bulk updates where speed matters more than uniqueness
+
+---
+
+## 🔄 Operations & Processing
+
+### Can I exit the app while AI optimization is processing?
+**Yes, you can safely exit** the app while optimization is processing. Each batch is sent to the server and processed independently. When you return, refresh the page to see updated results.
+
+### Can I start a second batch while the first batch is still processing?
+**Yes, you can start multiple batches.** Our system automatically handles global concurrency control to prevent API rate limits and smart retry mechanisms for reliability.
+
+### How do I verify that images were successfully optimized?
+In Shopify Admin:
+1. Navigate to Products, Collections, or Blog Posts
+2. Find the item containing the optimized image
+3. Check the alt text field in the media section
+
+In Max AI app:
+- Green "Optimized" badge in Alt Status column
+- New alt text displayed
+- Entry in Dashboard's Optimization History
+
+---
+
+## 💰 Billing & Plans
+
+### What happens when I upgrade or downgrade my plan?
+**If you upgrade:**
+- Charged the price difference, prorated for remaining days
+- Immediately receive the full monthly quota of the new plan
+
+**If you downgrade:**
+- Shopify issues a prorated credit for unused portion
+- You will NOT be charged extra if you've already used more than the new plan's quota
+- Next month, quota resets to new plan's limits
+
+### Which quota is consumed first - plan quota or Pay-As-You-Go credits?
+**Plan quota is always consumed first.** Pay-As-You-Go (PAYG) credits are only used when your monthly plan quota is exhausted.
+
+**Important: PAYG credits never expire**, so unused credits carry over indefinitely!
+
+### Can I try the app before committing to a paid plan?
+Yes! The **Lite plan is completely free** and includes:
+- Unlimited Dynamic Format optimizations
+- 10 AI Optimize credits per month
+- Weekly automation for Products
+- Full access to Image Optimization Manager
+
+---
+
+## 🛠️ Technical Questions
+
+### What are Variables in Dynamic Format?
+Variables are your store's basic information - the data you entered when creating products, collections, and blog posts:
+
+**Available Variables:**
+- **Products**: `{{title}}`, `{{variant}}`, `{{product_type}}`
+- **Collections**: `{{title}}`, `{{description}}`
+- **Blogs**: `{{article_title}}`, `{{blog_title}}`
+
+**Example**: Template `{{title}} - {{variant}}` with product "Classic T-Shirt" and variant "Navy - Large" generates: "Classic T-Shirt - Navy - Large"
+
+### What does the Reset button do? Will it clear my optimized alt text?
+**No, Reset is completely safe!** The Reset button only clears the scan results displayed in this app - it does NOT modify or delete any alt text in your Shopify store. All your optimized alt text remains intact.
+
+### Why can't I scan blog inline images, theme images, or page images?
+Due to Shopify API limitations, we cannot provide optimal optimization for these image types. Shopify's API does not support efficient bulk updates for blog inline, theme, or page images. We focus on product, collection, and blog featured images where we can deliver excellent results.
+
+---
+
+## 📞 Need More Help?
+
+Can't find your answer? Contact us:
+- 📧 **Email**: [support@selofy.com](mailto:support@selofy.com)
+- 🌐 **Website**: [selofy.com](https://selofy.com)
+- 📱 **App Page**: [www.selofy.com/apps/maxai-alttext](https://www.selofy.com/apps/maxai-alttext)

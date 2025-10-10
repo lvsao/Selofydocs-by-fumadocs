@@ -1,0 +1,195 @@
+---
+title: Automation Guide
+description: Set up scheduled scans and optimizations to keep your alt text up-to-date
+---
+
+# Automation Guide
+
+Automation allows you to set up scheduled scans and optimizations to keep your alt text up-to-date without manual intervention.
+
+## Automation Basics
+
+### What is Automation?
+
+Automation in Max AI Alt Text Optimizer enables:
+
+- **Scheduled Scans**: Regular checks for new or updated images
+- **Automatic Optimization**: Apply AI or Dynamic Format to images without manual action
+- **Consistent Maintenance**: Keep your alt text optimized as your store grows
+- **Offline Processing**: Runs even when you're not logged in
+
+## Setting Up Automation
+
+### Accessing Automation Settings
+
+1. Go to **Settings** > **Automation** tab
+2. Toggle the **Enable Automation** switch to ON
+3. Configure your automation preferences
+4. Click **Save Settings**
+
+### Schedule Frequency
+
+Choose how often your store is scanned:
+
+- **Daily**: Best for stores with frequent updates (Max and Ultra plans)
+- **Weekly**: Suitable for most stores (available on all plans)
+
+**Note**: Lite plan is limited to weekly automation for products only.
+
+### Scan Scope
+
+Select which content types to include:
+
+- **Products**: Product images and variants
+- **Collections**: Collection banners and featured images
+- **Blogs**: Blog post images and thumbnails
+
+**Note**: Lite plan is limited to Products only. Max and Ultra plans can select multiple types.
+
+### Schedule Time
+
+Configure when automation runs:
+
+#### Weekly Schedule
+- **Day of Week**: Choose from Monday to Sunday (default: Monday)
+- **Time**: 24-hour format HH:MM (default: 02:00)
+
+#### Daily Schedule
+- **Time**: 24-hour format HH:MM (default: 02:00)
+- Available on Max and Ultra plans only
+
+## Optimization Methods
+
+### Dynamic Format (Auto Format)
+
+Use templates for consistent formatting:
+
+1. Select **auto_format** as optimization method
+2. Configure templates in the Templates tab
+3. No AI credits consumed
+4. Unlimited usage on all plans
+
+### AI Optimization
+
+Use AI to generate contextually relevant alt text:
+
+1. Select **ai_optimize** as optimization method
+2. AI credits are consumed based on your plan
+3. **Best Effort Mode**: If quota is insufficient, processes as many images as possible
+4. Remaining images are skipped without errors
+
+## How Automation Works
+
+### Execution Process
+
+1. **Cron Trigger**: Scheduled task runs at configured time
+2. **Distributed Lock**: Acquires lock to prevent multiple instances from running simultaneously
+3. **Offline Token**: Uses offline access token (no need to be logged in)
+4. **Scan**: Scans configured content types for images missing alt text
+5. **Filter**: Identifies images that need optimization
+6. **Optimize**: Applies selected optimization method (AI or Dynamic Format)
+7. **Update Shopify**: Updates image alt text via Shopify API
+8. **Record History**: Logs operation with image IDs in OptimizeHistory
+9. **Release Lock**: Frees lock for next run
+
+### Distributed Locking
+
+- **Purpose**: Prevents multiple instances from running simultaneously
+- **Duration**: 10-minute auto-expiration
+- **Cleanup**: Expired locks are cleaned up hourly
+- **Instance ID**: `{hostname}-{pid}` identifies lock owner
+
+### Best Effort Quota
+
+When AI quota is limited:
+
+- Processes as many images as quota allows
+- Remaining images are skipped
+- Operation status: "partial_success"
+- No errors thrown
+- Next automation run will process remaining images (if quota available)
+
+## Monitoring Automation
+
+### Automation Status
+
+Check automation status in Settings:
+
+- **Enable Automation**: ON/OFF toggle
+- **Scan Types**: Selected content types
+- **Optimization Method**: AI or Dynamic Format
+- **Schedule**: Frequency and time
+
+### Optimization History
+
+Track automation runs in Dashboard:
+
+- **Operation Type**: Shows "automation_ai_optimize" or "automation_auto_format"
+- **Image Count**: Number of images processed
+- **Status**: completed, failed, or partial_success
+- **Details**: Additional information and image IDs
+- **Timestamp**: When automation ran
+
+### Re-initialization
+
+After app restart or deployment:
+
+- Automation schedules are cleared from memory
+- Call `/api/automation-init` to restore schedules
+- Or toggle automation OFF and ON in Settings
+
+## Best Practices
+
+### Optimal Scheduling
+
+- **New Store**: Run weekly for the first month
+- **Established Store**: Weekly is usually sufficient
+- **High-Volume Store**: Consider daily automation (Max/Ultra plans)
+- **Off-Peak Hours**: Schedule during low-traffic times (e.g., 2 AM)
+
+### Resource Optimization
+
+- **Use Dynamic Format** for routine images (saves AI credits)
+- **Reserve AI credits** for complex or important images
+- **Monitor quota usage** in Plan & Billing page
+- **Purchase Pay-As-You-Go credits** for occasional burst needs
+
+### Quota Management
+
+- **Lite Plan**: 10 AI optimizations/month
+  - Recommended: Use Dynamic Format for automation
+  - Reserve AI credits for manual high-priority images
+- **Max Plan**: 400 AI optimizations/month
+  - Safe to use AI optimization for automation
+  - Monitor usage for large catalogs
+- **Ultra Plan**: 1500 AI optimizations/month
+  - Ample quota for extensive automation
+
+### Maintenance
+
+- Review automation settings quarterly
+- Check history logs for recurring issues
+- Update templates as your store evolves
+- Adjust scheduling based on catalog update frequency
+
+## Troubleshooting
+
+### Automation Not Running
+
+- Check that **Enable Automation** is ON
+- Verify schedule configuration
+- Check app logs in recent history
+- Try toggling automation OFF and ON
+
+### Images Not Being Optimized
+
+- Verify images are missing alt text
+- Check quota availability (for AI optimization)
+- Review optimization method selection
+- Confirm content types are selected
+
+### Partial Success Status
+
+- **Normal Behavior**: Indicates quota was partially consumed
+- Remaining images will be processed in next run (if quota available)
+- Consider switching to Dynamic Format or purchasing additional credits

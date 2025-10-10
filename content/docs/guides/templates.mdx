@@ -1,0 +1,160 @@
+---
+title: Template Configuration
+description: Create consistent alt text formats using Dynamic Format templates
+---
+
+# Template Configuration
+
+Templates (also called "Dynamic Format") allow you to create consistent alt text formats across your store without using AI credits.
+
+## Template Basics
+
+### What Are Templates?
+
+Templates are predefined patterns for generating alt text that include variables from your product data. They provide:
+
+- **Consistency**: Uniform alt text format across your store
+- **Efficiency**: No AI credits required (unlimited usage)
+- **Customization**: Tailor formats to your specific needs
+
+### Template Variables
+
+Templates use variables enclosed in double curly braces:
+
+#### Product Variables
+- `{{ product_title }}`: Product title
+- `{{ variant }}`: Product variant name
+
+#### Collection Variables
+- `{{ collection_title }}`: Collection name
+
+#### Blog Variables
+- `{{ article_title }}`: Blog article title
+
+## Creating Templates
+
+### Default Templates
+
+The app provides default templates for each content type:
+
+- **Products**: `{{ product_title }} {{ variant }}`
+- **Collections**: `{{ collection_title }}`
+- **Blogs**: `{{ article_title }}`
+
+### Custom Templates
+
+To create or modify templates:
+
+1. Go to **Settings** > **Templates** tab
+2. Select the content type (Products, Collections, Blogs)
+3. Enter your custom format using available variables
+4. Use the **Insert Variable** buttons for easy insertion
+5. Preview the result with sample data
+6. Click **Save Settings**
+
+### Template Examples
+
+#### Product Templates
+```
+{{ product_title }} {{ variant }}
+```
+Output: "Winter Jacket Red Large"
+
+#### Collection Templates
+```
+{{ collection_title }}
+```
+Output: "Summer Collection 2025"
+
+#### Blog Templates
+```
+{{ article_title }}
+```
+Output: "How to Choose the Perfect Jacket"
+
+## Real-Time Preview
+
+The Settings page includes a real-time preview feature:
+
+### Sample Data
+- View example product/collection/blog data
+- See actual values that will be used
+
+### Generated Alt Text
+- Preview the final alt text output
+- Verify template formatting before saving
+- Ensure variables are correctly placed
+
+## Template Application
+
+### Manual Application
+
+Apply templates to selected images:
+
+1. Go to **Image Optimization Manager**
+2. Select images you want to optimize
+3. Click **Batch Auto Format** button
+4. Templates are applied automatically based on image type
+
+### Single Image
+
+Apply template to a single image:
+
+1. In Image Manager, find the image
+2. Click **Auto Format** button
+3. Template is applied based on image type (Product/Collection/Blog)
+
+### Automation
+
+Set up automated template application:
+
+1. Go to **Settings** > **Automation**
+2. Enable automation
+3. Select **auto_format** as optimization method
+4. Templates will be automatically applied during scheduled runs
+
+## Best Practices
+
+### Template Optimization
+
+- Keep templates concise (under 125 characters)
+- Include most important information first
+- Use proper spacing between variables
+- Test templates with various products
+
+### Content-Specific Templates
+
+Create specialized templates for different scenarios:
+
+- **Product with Variants**: `{{ product_title }} {{ variant }}`
+- **Simple Products**: `{{ product_title }}`
+- **Collections**: `{{ collection_title }}`
+- **Blog Articles**: `{{ article_title }}`
+
+### Template Maintenance
+
+- Review templates quarterly
+- Update as your product catalog changes
+- Test new templates on a small batch first
+- Monitor alt text quality in search results
+
+## Variable Behavior
+
+### Empty Variables
+
+If a variable is empty or undefined:
+- The variable placeholder is replaced with an empty string
+- Extra spaces are automatically trimmed
+- Example: `{{ product_title }} {{ variant }}` with no variant becomes just the product title
+
+### Special Characters
+
+Variables automatically handle special characters from Shopify data without requiring escaping.
+
+## Quota Usage
+
+**Dynamic Format operations use ZERO AI credits**
+
+- Unlimited usage on all plans
+- No quota restrictions
+- Perfect for maintaining consistent alt text across large catalogs

@@ -1,4 +1,10 @@
 {
-  "title": "Documentation",
-  "pages": ["index", "getting-started"]
+  "pages": [
+    "index",
+    "features",
+    "getting-started",
+    "guides",
+    "pricing",
+    "faq"
+  ]
 }

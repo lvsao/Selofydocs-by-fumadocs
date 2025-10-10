@@ -1,0 +1,115 @@
+---
+title: Dynamic Format Templates
+description: Create consistent alt text with customizable templates and variables
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+# Dynamic Format Templates
+
+Create consistent, brand-aligned alt text across your store using customizable templates with dynamic variables.
+
+---
+
+## What are Templates?
+
+Templates allow you to define alt text patterns that automatically populate with your product, collection, or blog information. Perfect for maintaining consistency across large catalogs.
+
+<Callout type="info">
+**When to use templates**: Great for standardized products where you want consistent formatting. For unique descriptions, use AI Optimize instead.
+</Callout>
+
+---
+
+## Available Variables
+
+### Products
+- `{{title}}` - Product title
+- `{{variant}}` - Variant name (e.g., "Blue - Large")
+- `{{product_type}}` - Product type/category
+
+### Collections
+- `{{title}}` - Collection title
+- `{{description}}` - Collection description
+
+### Blogs
+- `{{article_title}}` - Blog post title
+- `{{blog_title}}` - Blog name
+
+---
+
+## Template Examples
+
+### Product Template
+```
+{{title}} - {{variant}} | Premium Quality
+```
+**Result**: "Classic Cotton T-Shirt - Navy Blue - Large | Premium Quality"
+
+### Collection Template
+```
+Shop our {{title}} collection - {{description}}
+```
+**Result**: "Shop our Summer Sale collection - Save up to 50% on selected items"
+
+### Blog Template
+```
+{{article_title}} - {{blog_title}} | Your Brand
+```
+**Result**: "10 SEO Tips - Marketing Blog | Your Brand"
+
+---
+
+## Setting Up Templates
+
+<Steps>
+
+### Navigate to Settings
+Go to **Settings** from the main navigation menu
+
+### Select Template Tab
+Choose **Products**, **Collections**, or **Blogs** tab
+
+### Insert Variables
+Click variable buttons to insert placeholders into your template
+
+### Preview Results
+Check the **Sample Data** section to see how your template renders
+
+### Save Templates
+Click **Save Templates** to apply your configuration
+
+</Steps>
+
+---
+
+## Best Practices
+
+### ✅ Do's
+- Keep templates concise (under 125 characters)
+- Include brand name for recognition
+- Use clear, descriptive patterns
+- Test with sample data before applying
+
+### ❌ Don'ts
+- Don't use ALL CAPS
+- Avoid special characters excessively
+- Don't make templates too generic
+- Don't forget to save changes
+
+---
+
+## Template vs AI Optimize
+
+| Feature | Template | AI Optimize |
+|---------|----------|-------------|
+| **Speed** | ⚡ Instant | 2-5 sec/image |
+| **Consistency** | ✅ High | Variable |
+| **SEO Quality** | Good | Excellent |
+| **Cost** | Free (Unlimited) | Consumes AI quota |
+| **Best For** | Standard products | Unique items |
+
+<Callout type="warn">
+**Recommendation**: Use AI Optimize for maximum SEO impact. Templates are best for budget-conscious merchants or highly standardized catalogs.
+</Callout>

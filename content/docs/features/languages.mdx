@@ -1,0 +1,113 @@
+---
+title: Multi-Language Support
+description: Generate alt text in 18+ languages for global e-commerce stores
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+# Multi-Language Support
+
+Optimize your store's images in multiple languages to reach global audiences and improve international SEO.
+
+## Supported Languages
+
+Max AI supports **18 languages** for alt text generation:
+
+### Western Languages
+- 🇺🇸 English
+- 🇪🇸 Spanish
+- 🇫🇷 French
+- 🇩🇪 German
+- 🇮🇹 Italian
+- 🇵🇹 Portuguese
+- 🇳🇱 Dutch
+
+### Asian Languages
+- 🇨🇳 Chinese (Simplified)
+- 🇹🇼 Chinese (Traditional)
+- 🇯🇵 Japanese
+- 🇰🇷 Korean
+- 🇹🇭 Thai
+- 🇻🇳 Vietnamese
+- 🇮🇩 Indonesian
+
+### Other Languages
+- 🇷🇺 Russian
+- 🇵🇱 Polish
+- 🇹🇷 Turkish
+- 🇸🇦 Arabic
+
+## How It Works
+
+### Language Detection
+
+Max AI automatically detects your store's primary language from:
+1. **Shop Configuration** - Your Shopify store's default language
+2. **Product Content** - Product titles and descriptions
+3. **Manual Override** - Settings → Language Preference
+
+### AI-Powered Translation
+
+The GLM-4.5V model generates alt text directly in your target language:
+- **Native phrasing** - Not machine translation
+- **Cultural context** - Appropriate for regional audiences
+- **SEO optimized** - Uses local search keywords
+
+<Callout type="info">
+**Better than translation**: AI generates alt text directly in the target language instead of translating English text, resulting in more natural and culturally appropriate descriptions.
+</Callout>
+
+## Setup Language Preferences
+
+1. Go to **Settings** → **Language**
+2. Select your primary language from dropdown
+3. (Optional) Choose fallback language
+4. Save settings
+
+All future AI optimizations will use your selected language.
+
+## Multi-Store Support
+
+Managing stores in different regions?
+
+| Store | Language Setting | Alt Text Output |
+|-------|------------------|-----------------|
+| US Store | English | "Premium cotton t-shirt in navy blue" |
+| FR Store | French | "T-shirt en coton premium bleu marine" |
+| JP Store | Japanese | "プレミアムコットンTシャツ ネイビーブルー" |
+
+Each store gets optimized alt text in its local language automatically.
+
+## Template Variables
+
+Dynamic Format Templates work in all languages:
+
+**English Template**: `{{title}} - {{variant}} | Premium Quality`  
+**Result**: "Cotton Shirt - Blue Large | Premium Quality"
+
+**French Template**: `{{title}} - {{variant}} | Qualité Premium`  
+**Result**: "Chemise en Coton - Bleu Grande | Qualité Premium"
+
+<Callout type="warn">
+**Variable names stay in English** (e.g., `{{title}}`), but the surrounding text should be in your target language.
+</Callout>
+
+## SEO Benefits
+
+Localized alt text improves:
+- **Google Image Search** rankings in target regions
+- **Accessibility** for screen readers in local languages
+- **User Experience** for international customers
+- **Conversion rates** through better product understanding
+
+---
+
+## Limitations
+
+- **Automation Language**: Uses store's default language setting
+- **Mixed Content**: If product titles are in English but store language is French, AI generates French alt text based on English product data
+- **Quota Usage**: Same AI quota consumption regardless of language
+
+<Callout>
+**Pro Tip**: For best results, ensure your product titles and descriptions are already in your target language before running AI optimization.
+</Callout>
