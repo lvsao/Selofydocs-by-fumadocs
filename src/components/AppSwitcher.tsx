@@ -64,49 +64,51 @@ export function AppSwitcher() {
           <span className="text-lg">{currentApp.iconEmoji}</span>
         )}
         <span className="font-medium flex-1 text-left">{currentApp.name}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
+      {/* Backdrop */}
       {isOpen && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 z-40"
-            onClick={() => setIsOpen(false)}
-          />
-
-          {/* Dropdown */}
-          <div className="absolute top-full left-3 right-3 mt-2 bg-popover border rounded-md shadow-lg z-50">
-            <div className="p-1">
-              {apps.map(app => (
-                <button
-                  key={app.slug}
-                  onClick={() => handleSwitch(app.slug)}
-                  className={`w-full flex items-center gap-2 px-3 py-2 rounded-sm hover:bg-accent transition-colors text-left ${
-                    app.slug === currentSlug ? 'bg-accent' : ''
-                  }`}
-                >
-                  {app.iconUrl ? (
-                    <Image
-                      src={app.iconUrl}
-                      alt={app.name}
-                      width={20}
-                      height={20}
-                      className="w-5 h-5"
-                    />
-                  ) : (
-                    <span className="text-lg">{app.iconEmoji}</span>
-                  )}
-                  <span className="font-medium flex-1">{app.name}</span>
-                  {app.slug === currentSlug && (
-                    <span className="ml-auto text-primary">✓</span>
-                  )}
-                </button>
-              ))}
-            </div>
-          </div>
-        </>
+        <div
+          className="fixed inset-0 z-40"
+          onClick={() => setIsOpen(false)}
+        />
       )}
+
+      {/* Dropdown with animation */}
+      <div
+        className={`absolute top-full left-3 right-3 mt-2 bg-background border rounded-md shadow-lg z-50 transition-all duration-200 origin-top ${
+          isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'
+        }`}
+      >
+        <div className="p-1">
+          {apps.map(app => (
+            <button
+              key={app.slug}
+              onClick={() => handleSwitch(app.slug)}
+              className={`w-full flex items-center gap-2 px-3 py-2 rounded-sm hover:bg-accent transition-colors text-left ${
+                app.slug === currentSlug ? 'bg-accent' : ''
+              }`}
+            >
+              {app.iconUrl ? (
+                <Image
+                  src={app.iconUrl}
+                  alt={app.name}
+                  width={20}
+                  height={20}
+                  className="w-5 h-5"
+                />
+              ) : (
+                <span className="text-lg">{app.iconEmoji}</span>
+              )}
+              <span className="font-medium flex-1">{app.name}</span>
+              {app.slug === currentSlug && (
+                <span className="ml-auto text-primary">✓</span>
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
