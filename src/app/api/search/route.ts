@@ -1,6 +1,6 @@
-import { sources } from '@/lib/source'
+import { source } from '@/lib/source'
 import { createFromSource } from 'fumadocs-core/search/server'
 
-// 合并所有app的源进行搜索
-const allSources = Object.values(sources)
-export const { GET } = createFromSource(allSources)
+// 使用默认源（max-ai-alt-text）进行搜索
+// TODO: 未来可以扩展为多源搜索
+export const { GET } = createFromSource(source)
