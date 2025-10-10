@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   },
   description: 'Official documentation for Selofy Shopify apps',
   keywords: ['Shopify', 'Alt Text', 'SEO', 'AI', 'Documentation'],
+  icons: {
+    icon: 'https://image.selofy.com/cdn-cgi/image/format=auto,quality=85/selofy/alttext/selofy-favi.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: ReactNode }) {

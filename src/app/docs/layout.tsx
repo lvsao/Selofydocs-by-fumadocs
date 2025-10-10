@@ -15,11 +15,11 @@ export default function Layout({ children }: { children: ReactNode }) {
         title: (
           <div className="flex items-center gap-3">
             <Image
-              src="https://image.selofy.com/cdn-cgi/image/format=auto,quality=85,width=32,height=32/selofy/SELOFY-256.svg"
+              src="https://image.selofy.com/cdn-cgi/image/format=auto,quality=85,height=32/selofy/alttext/selofy_logo.svg"
               alt="Selofy"
-              width={32}
+              width={120}
               height={32}
-              className="rounded"
+              className="h-8 w-auto"
             />
             <AppSwitcher />
           </div>
