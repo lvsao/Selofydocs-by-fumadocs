@@ -75,9 +75,9 @@ export function AppSwitcher() {
         />
       )}
 
-      {/* Dropdown - 完全不透明，宽度与按钮一致 */}
+      {/* Dropdown - 完全不透明，宽度与search bar完全一致 */}
       <div
-        className={`absolute top-full left-3 right-3 mt-2 bg-fd-background dark:bg-fd-background border border-fd-border rounded-md shadow-xl z-50 transition-all duration-200 ease-in-out origin-top ${
+        className={`absolute top-full left-0 right-0 mt-2 mx-3 bg-fd-background dark:bg-fd-background border border-fd-border rounded-md shadow-xl z-50 transition-all duration-200 ease-in-out origin-top ${
           isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'
         }`}
       >

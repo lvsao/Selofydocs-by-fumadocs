@@ -3,6 +3,25 @@ import { DocsLayout } from 'fumadocs-ui/layouts/docs'
 import type { ReactNode } from 'react'
 import Image from 'next/image'
 import { AppSwitcher } from '@/components/AppSwitcher'
+import {
+  Sparkles,
+  Rocket,
+  BookOpen,
+  DollarSign,
+  FileText,
+  HelpCircle,
+  Shield
+} from 'lucide-react'
+
+const iconMap = {
+  Sparkles,
+  Rocket,
+  BookOpen,
+  DollarSign,
+  FileText,
+  HelpCircle,
+  Shield,
+}
 
 export default async function AppLayout({
   children,
@@ -32,6 +51,11 @@ export default async function AppLayout({
       sidebar={{
         banner: <AppSwitcher />,
         defaultOpenLevel: 0,
+        getIcon: (name: string | undefined) => {
+          if (!name) return null
+          const Icon = iconMap[name as keyof typeof iconMap]
+          return Icon ? <Icon className="size-4" /> : null
+        },
       }}
       links={[
         {
