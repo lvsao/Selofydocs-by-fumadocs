@@ -1,0 +1,169 @@
+---
+title: Changelog
+description: What's new in Max AI Alt Text Optimizer
+---
+
+import { Callout } from 'fumadocs-ui/components/callout';
+
+# 📝 Changelog
+
+Stay up to date with the latest features, improvements, and bug fixes for Max AI Alt Text Optimizer.
+
+---
+
+## [1.2.0] - 2025-10-08
+
+### ✨ New Features
+
+**Dual-Status Tracking System**
+- Introduced **Alt Text Coverage** metric: Tracks images with alt text from any source (manual or app-generated)
+- Added **Max Optimized** metric: Specifically tracks images optimized by the app
+- Enhanced Dashboard Overview with both metrics displayed prominently
+- Image Manager now shows dual-layer badges for better visibility
+
+**Enhanced Data Tracking**
+- `OptimizeHistory.details` now stores JSON data with `{message, imageIds[]}` for precise tracking
+- Improved optimization history with detailed image-level records
+
+### 🎨 UI Improvements
+
+**Dashboard Redesign**
+- Simplified Overview cards with large numbers (headingLg) and percentage badges
+- Removed redundant progress bars for cleaner interface
+- By Image Type cards now show compact dual-metric display: `📝 Alt Text: 20/25 | ⚡ Max: 10/25`
+- Removed duplicate action buttons for streamlined UX
+
+**Image Manager Enhancements**
+- Dual-status badges: 📝 Has Alt / ❌ Missing + ⚡ Max Optimized
+- Clearer visual distinction between alt text status and optimization source
+
+### 🐛 Bug Fixes
+
+**Manual Edit Logic**
+- Fixed: Saving blank alt text no longer incorrectly marks image as "Max Optimized"
+- Logic updated: `optimizedByMax: finalAltText.length > 0`
+
+**Settings Defaults**
+- Corrected `scheduleFrequency` default value to `"weekly"` (previously inconsistent)
+- Automation enable now pre-selects weekly schedule with Monday at 02:00
+- Lite plan correctly enforces weekly-only automation
+- Max/Ultra plans can choose between daily and weekly schedules
+
+### ⚙️ Technical Improvements
+
+**Multi-Environment Configuration**
+- Added `shopify.app.toml` for localhost development
+- Added `shopify.app.production.toml` as production reference
+- Same App ID with environment-specific instances for better isolation
+- Production runtime uses environment variables instead of TOML files
+
+---
+
+## [1.1.0] - 2025-09-28
+
+### ✨ New Features
+
+**GDPR Compliance Webhooks**
+- Implemented `customers/data_request` webhook for GDPR data access requests
+- Implemented `customers/redact` webhook for GDPR customer data deletion
+- Implemented `shop/redact` webhook for shop data deletion after uninstall
+- Added `compliance_topics` field to app configuration
+
+### 🔧 Improvements
+
+**Database Schema Updates**
+- Migrated from SQLite to PostgreSQL for better scalability
+- Updated `schema.prisma` with proper PostgreSQL syntax
+- Improved data integrity and performance
+
+---
+
+## [1.0.0] - 2025-09-15
+
+### 🎉 Initial Release
+
+**Core Features**
+- 🔍 **Full Store Scanning**: Scan Products, Collections, and Blog images
+- 🤖 **AI-Powered Optimization**: GLM-4.5V vision model with shop context injection
+- ⚡ **Dynamic Format**: Template-based alt text generation with variables
+- ✏️ **Manual Editing**: Single-image editing with preview
+- 🔄 **Automation**: Weekly/Daily scheduled optimization with distributed locking
+- 💰 **Subscription Plans**: Lite (Free), Max ($15.9), Ultra ($39.9)
+- 📊 **Dashboard**: Overview statistics and optimization history
+
+**AI Capabilities**
+- Dual-model architecture: Zhipu AI (primary) + SiliconFlow (backup)
+- Smart batch processing: Auto-grouping for efficiency
+- Global concurrency pool: Prevent API rate limits
+- Shop context: Brand name and description injection for relevant alt text
+
+**Automation**
+- Offline access token: No user presence required
+- Distributed locking: Multi-instance conflict prevention
+- Best Effort quota mode: Partial processing when quota is limited
+- Configurable schedules: Weekly/Daily based on plan tier
+
+**Template System**
+- Product variables: `{{ product_title }}`, `{{ variant }}`, `{{ product_type }}`
+- Collection variables: `{{ collection_title }}`, `{{ description }}`
+- Blog variables: `{{ article_title }}`, `{{ blog_title }}`
+- Real-time preview with sample data
+
+**Dashboard & UI**
+- Overview statistics with coverage metrics
+- By Image Type breakdown (Products/Collections/Blogs)
+- Optimization History timeline
+- Image Optimization Manager with filtering and sorting
+- Batch operations and single-image actions
+
+**Subscription Management**
+- Three-tier plans with different quotas
+- Usage statistics tracking per month
+- Dynamic Format: Unlimited across all plans
+- AI Optimize: 10/month (Lite), 400/month (Max), 1500/month (Ultra)
+- Plan upgrade/downgrade with prorated billing
+
+**Technical Stack**
+- Frontend: Remix + TypeScript + Shopify Polaris
+- Backend: Node.js + Shopify Admin API
+- Database: PostgreSQL + Prisma ORM
+- AI: GLM-4.5V (Zhipu AI & SiliconFlow)
+- Scheduling: node-cron
+- Deployment: Dokploy (Docker)
+
+---
+
+## 📋 Version History
+
+| Version | Release Date | Highlights |
+|---------|--------------|------------|
+| 1.2.0   | 2025-10-08  | Dual-status tracking, UI simplification, multi-env config |
+| 1.1.0   | 2025-09-28  | GDPR compliance, PostgreSQL migration |
+| 1.0.0   | 2025-09-15  | Initial release with core features |
+
+---
+
+## 🔮 Coming Soon
+
+We're constantly working to improve Max AI Alt Text Optimizer. Here's what's on the roadmap:
+
+- 🎫 **Pay-As-You-Go UI**: Purchase additional credits directly in the app
+- 🏷️ **Discount Code Management**: Backend system for promotional campaigns
+- 🌐 **Additional Language Support**: Expand beyond current 18 languages
+- 📈 **Advanced Analytics**: Detailed SEO impact reporting
+- 🔗 **API Integration**: Programmatic access for advanced users
+
+---
+
+<Callout type="info">
+**Have a feature request?** We'd love to hear from you! Contact us at [support@selofy.com](mailto:support@selofy.com)
+</Callout>
+
+---
+
+## 📞 Support
+
+Need help with a specific version or update?
+- 📧 **Email**: [support@selofy.com](mailto:support@selofy.com)
+- 🌐 **Website**: [selofy.com](https://selofy.com)
+- 📱 **App Page**: [www.selofy.com/apps/maxai-alttext](https://www.selofy.com/apps/maxai-alttext)
