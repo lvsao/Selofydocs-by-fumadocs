@@ -28,9 +28,9 @@ export default async function AppLayout({
           />
         ),
         url: `/docs/${app}`,
+        children: <AppSwitcher />,
       }}
       sidebar={{
-        banner: <AppSwitcher />,
         defaultOpenLevel: 0,
       }}
       links={[

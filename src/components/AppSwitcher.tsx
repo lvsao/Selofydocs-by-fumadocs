@@ -46,69 +46,67 @@ export function AppSwitcher() {
   }
 
   return (
-    <div className="w-full py-2">
-      <div className="relative px-3">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center gap-2 px-3 py-2 rounded-md hover:bg-accent transition-all duration-200 border"
-          aria-label="Switch app"
-        >
-          {currentApp.iconUrl ? (
-            <Image
-              src={currentApp.iconUrl}
-              alt={currentApp.name}
-              width={20}
-              height={20}
-              className="w-5 h-5"
-            />
-          ) : (
-            <span className="text-lg">{currentApp.iconEmoji}</span>
-          )}
-          <span className="font-medium flex-1 text-left">{currentApp.name}</span>
-          <ChevronDown className={`w-4 h-4 transition-transform duration-200 ease-in-out ${isOpen ? 'rotate-180' : ''}`} />
-        </button>
-
-        {/* Backdrop */}
-        {isOpen && (
-          <div
-            className="fixed inset-0 z-40"
-            onClick={() => setIsOpen(false)}
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-accent transition-all duration-200 text-sm"
+        aria-label="Switch app"
+      >
+        {currentApp.iconUrl ? (
+          <Image
+            src={currentApp.iconUrl}
+            alt={currentApp.name}
+            width={16}
+            height={16}
+            className="w-4 h-4"
           />
+        ) : (
+          <span className="text-base">{currentApp.iconEmoji}</span>
         )}
+        <span className="font-medium">{currentApp.name}</span>
+        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ease-in-out ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
 
-        {/* Dropdown - 宽度与按钮完全一致 */}
+      {/* Backdrop */}
+      {isOpen && (
         <div
-          className={`absolute top-full left-0 right-0 mt-2 bg-fd-background dark:bg-fd-background border border-fd-border rounded-md shadow-xl z-50 transition-all duration-200 ease-in-out origin-top ${
-            isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'
-          }`}
-        >
-          <div className="p-1">
-            {apps.map(app => (
-              <button
-                key={app.slug}
-                onClick={() => handleSwitch(app.slug)}
-                className={`w-full flex items-center gap-2 px-3 py-2 rounded-sm hover:bg-fd-accent transition-colors text-left ${
-                  app.slug === currentSlug ? 'bg-fd-accent' : ''
-                }`}
-              >
-                {app.iconUrl ? (
-                  <Image
-                    src={app.iconUrl}
-                    alt={app.name}
-                    width={20}
-                    height={20}
-                    className="w-5 h-5"
-                  />
-                ) : (
-                  <span className="text-lg">{app.iconEmoji}</span>
-                )}
-                <span className="font-medium flex-1">{app.name}</span>
-                {app.slug === currentSlug && (
-                  <span className="ml-auto text-fd-primary">✓</span>
-                )}
-              </button>
-            ))}
-          </div>
+          className="fixed inset-0 z-40"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
+
+      {/* Dropdown Menu */}
+      <div
+        className={`absolute top-full left-0 mt-2 min-w-[240px] bg-fd-background dark:bg-fd-background border border-fd-border rounded-md shadow-xl z-50 transition-all duration-200 ease-in-out origin-top ${
+          isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'
+        }`}
+      >
+        <div className="p-1">
+          {apps.map(app => (
+            <button
+              key={app.slug}
+              onClick={() => handleSwitch(app.slug)}
+              className={`w-full flex items-center gap-2 px-3 py-2 rounded-sm hover:bg-fd-accent transition-colors text-left text-sm ${
+                app.slug === currentSlug ? 'bg-fd-accent' : ''
+              }`}
+            >
+              {app.iconUrl ? (
+                <Image
+                  src={app.iconUrl}
+                  alt={app.name}
+                  width={16}
+                  height={16}
+                  className="w-4 h-4"
+                />
+              ) : (
+                <span className="text-base">{app.iconEmoji}</span>
+              )}
+              <span className="font-medium flex-1">{app.name}</span>
+              {app.slug === currentSlug && (
+                <span className="ml-auto text-fd-primary">✓</span>
+              )}
+            </button>
+          ))}
         </div>
       </div>
     </div>
