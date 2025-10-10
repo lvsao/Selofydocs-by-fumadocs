@@ -1,5 +1,5 @@
 import { loader } from 'fumadocs-core/source'
-import { maxAiDocs, comingSoonDocs } from '@/.source'
+import { maxAiDocs, comingSoonDocs } from '../../.source'
 
 // 定义所有 app 的源
 export const sources = {
