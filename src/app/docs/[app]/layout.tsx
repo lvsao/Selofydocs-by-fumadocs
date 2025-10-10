@@ -1,24 +1,18 @@
-'use client'
-
+import { getSource } from '@/lib/source'
 import { DocsLayout } from 'fumadocs-ui/layouts/docs'
 import type { ReactNode } from 'react'
-import { sources } from '@/lib/source'
 import Image from 'next/image'
 import { AppSwitcher } from '@/components/AppSwitcher'
-import { usePathname } from 'next/navigation'
 
-export default function Layout({ children }: { children: ReactNode }) {
-  const pathname = usePathname()
-
-  // 从路径动态获取当前app的源
-  const getCurrentSource = () => {
-    if (pathname.startsWith('/docs/coming-soon')) {
-      return sources['coming-soon']
-    }
-    return sources['max-ai-alt-text']
-  }
-
-  const currentSource = getCurrentSource()
+export default async function AppLayout({
+  children,
+  params,
+}: {
+  children: ReactNode
+  params: Promise<{ app: string }>
+}) {
+  const { app } = await params
+  const currentSource = getSource(app)
 
   return (
     <DocsLayout
@@ -33,7 +27,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             className="h-8 w-auto"
           />
         ),
-        url: '/docs/max-ai-alt-text',
+        url: `/docs/${app}`,
       }}
       sidebar={{
         banner: <AppSwitcher />,

@@ -1,12 +1,13 @@
-import { source } from '@/lib/source'
+import { getSource, sources } from '@/lib/source'
 import { DocsPage, DocsBody } from 'fumadocs-ui/page'
 import { notFound } from 'next/navigation'
 
 export default async function Page(props: {
-  params: Promise<{ slug?: string[] }>
+  params: Promise<{ app: string; slug?: string[] }>
 }) {
   const params = await props.params
-  const page = source.getPage(params.slug)
+  const currentSource = getSource(params.app)
+  const page = currentSource.getPage(params.slug)
   if (!page) notFound()
 
   const MDX = page.data.body
@@ -22,14 +23,23 @@ export default async function Page(props: {
 }
 
 export async function generateStaticParams() {
-  return source.generateParams()
+  // 为所有app生成静态路径
+  const params: Array<{ app: string; slug?: string[] }> = []
+
+  for (const [appSlug, appSource] of Object.entries(sources)) {
+    const appParams = appSource.generateParams()
+    params.push(...appParams.map(p => ({ app: appSlug, ...p })))
+  }
+
+  return params
 }
 
 export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>
+  params: Promise<{ app: string; slug?: string[] }>
 }) {
   const params = await props.params
-  const page = source.getPage(params.slug)
+  const currentSource = getSource(params.app)
+  const page = currentSource.getPage(params.slug)
   if (!page) notFound()
 
   return {

@@ -1,4 +1,6 @@
-import { source } from '@/lib/source'
+import { sources } from '@/lib/source'
 import { createFromSource } from 'fumadocs-core/search/server'
 
-export const { GET } = createFromSource(source)
+// 合并所有app的源进行搜索
+const allSources = Object.values(sources)
+export const { GET } = createFromSource(allSources)
