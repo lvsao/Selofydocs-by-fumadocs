@@ -1,15 +1,19 @@
 import { DocsLayout } from 'fumadocs-ui/layouts/docs'
 import type { ReactNode } from 'react'
-import { source } from '@/lib/source'
+import { sources } from '@/lib/source'
 import Image from 'next/image'
+import { AppSwitcher } from '@/components/AppSwitcher'
 
 export default function Layout({ children }: { children: ReactNode }) {
+  // 使用 max-ai-alt-text 作为默认源
+  const defaultSource = sources['max-ai-alt-text']
+
   return (
     <DocsLayout
-      tree={source.pageTree}
+      tree={defaultSource.pageTree}
       nav={{
         title: (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <Image
               src="https://image.selofy.com/cdn-cgi/image/format=auto,quality=85,width=32,height=32/selofy/SELOFY-256.svg"
               alt="Selofy"
@@ -17,10 +21,10 @@ export default function Layout({ children }: { children: ReactNode }) {
               height={32}
               className="rounded"
             />
-            <span>Selofy Docs</span>
+            <AppSwitcher />
           </div>
         ),
-        url: '/docs',
+        url: '/docs/max-ai-alt-text',
       }}
       links={[
         {
