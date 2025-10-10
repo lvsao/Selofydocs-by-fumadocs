@@ -49,7 +49,7 @@ export function AppSwitcher() {
     <div className="relative w-full px-3 py-2">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center gap-2 px-3 py-2 rounded-md hover:bg-accent transition-colors border"
+        className="w-full flex items-center gap-2 px-3 py-2 rounded-md hover:bg-accent transition-all duration-200 border"
         aria-label="Switch app"
       >
         {currentApp.iconUrl ? (
@@ -64,7 +64,7 @@ export function AppSwitcher() {
           <span className="text-lg">{currentApp.iconEmoji}</span>
         )}
         <span className="font-medium flex-1 text-left">{currentApp.name}</span>
-        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 transition-transform duration-200 ease-in-out ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {/* Backdrop */}
@@ -75,9 +75,9 @@ export function AppSwitcher() {
         />
       )}
 
-      {/* Dropdown with animation */}
+      {/* Dropdown - 完全不透明，宽度与按钮一致 */}
       <div
-        className={`absolute top-full left-3 right-3 mt-2 bg-background border rounded-md shadow-lg z-50 transition-all duration-200 origin-top ${
+        className={`absolute top-full left-3 right-3 mt-2 bg-fd-background dark:bg-fd-background border border-fd-border rounded-md shadow-xl z-50 transition-all duration-200 ease-in-out origin-top ${
           isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'
         }`}
       >
@@ -86,8 +86,8 @@ export function AppSwitcher() {
             <button
               key={app.slug}
               onClick={() => handleSwitch(app.slug)}
-              className={`w-full flex items-center gap-2 px-3 py-2 rounded-sm hover:bg-accent transition-colors text-left ${
-                app.slug === currentSlug ? 'bg-accent' : ''
+              className={`w-full flex items-center gap-2 px-3 py-2 rounded-sm hover:bg-fd-accent transition-colors text-left ${
+                app.slug === currentSlug ? 'bg-fd-accent' : ''
               }`}
             >
               {app.iconUrl ? (
@@ -103,7 +103,7 @@ export function AppSwitcher() {
               )}
               <span className="font-medium flex-1">{app.name}</span>
               {app.slug === currentSlug && (
-                <span className="ml-auto text-primary">✓</span>
+                <span className="ml-auto text-fd-primary">✓</span>
               )}
             </button>
           ))}
