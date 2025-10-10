@@ -1,47 +1,12 @@
 {
   "pages": [
     "index",
-    {
-      "type": "page",
-      "title": "Features",
-      "url": "features",
-      "icon": "Sparkles"
-    },
-    {
-      "type": "page",
-      "title": "Getting Started",
-      "url": "getting-started",
-      "icon": "Rocket"
-    },
-    {
-      "type": "page",
-      "title": "Guides",
-      "url": "guides",
-      "icon": "BookOpen"
-    },
-    {
-      "type": "page",
-      "title": "Pricing",
-      "url": "pricing",
-      "icon": "DollarSign"
-    },
-    {
-      "type": "page",
-      "title": "Changelog",
-      "url": "changelog",
-      "icon": "FileText"
-    },
-    {
-      "type": "page",
-      "title": "FAQ",
-      "url": "faq",
-      "icon": "HelpCircle"
-    },
-    {
-      "type": "page",
-      "title": "Privacy Policy",
-      "url": "privacy-policy",
-      "icon": "Shield"
-    }
+    "features",
+    "getting-started",
+    "guides",
+    "pricing",
+    "changelog",
+    "faq",
+    "privacy-policy"
   ]
 }
