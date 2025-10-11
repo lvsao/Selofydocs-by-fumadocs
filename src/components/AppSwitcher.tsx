@@ -46,25 +46,25 @@ export function AppSwitcher() {
   }
 
   return (
-    <div className="relative">
+    <div className="relative inline-flex">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-1.5 rounded-md hover:bg-accent transition-all duration-200 text-sm"
+        className="flex items-center gap-1.5 px-2 py-1 rounded-md hover:bg-fd-accent transition-all duration-200 text-xs"
         aria-label="Switch app"
       >
         {currentApp.iconUrl ? (
           <Image
             src={currentApp.iconUrl}
             alt={currentApp.name}
-            width={16}
-            height={16}
-            className="w-4 h-4"
+            width={14}
+            height={14}
+            className="w-3.5 h-3.5"
           />
         ) : (
-          <span className="text-base">{currentApp.iconEmoji}</span>
+          <span className="text-sm">{currentApp.iconEmoji}</span>
         )}
         <span className="font-medium">{currentApp.name}</span>
-        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ease-in-out ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-3 h-3 transition-transform duration-200 ease-in-out ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {/* Backdrop */}
@@ -75,9 +75,9 @@ export function AppSwitcher() {
         />
       )}
 
-      {/* Dropdown Menu */}
+      {/* Dropdown Menu - Opens upward */}
       <div
-        className={`absolute top-full left-0 mt-2 min-w-[240px] bg-fd-background dark:bg-fd-background border border-fd-border rounded-md shadow-xl z-50 transition-all duration-200 ease-in-out origin-top ${
+        className={`absolute bottom-full left-0 mb-2 min-w-[200px] bg-fd-background dark:bg-fd-background border border-fd-border rounded-md shadow-xl z-50 transition-all duration-200 ease-in-out origin-bottom ${
           isOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-95 pointer-events-none'
         }`}
       >

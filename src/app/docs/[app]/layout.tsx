@@ -31,7 +31,11 @@ export default async function AppLayout({
       }}
       sidebar={{
         defaultOpenLevel: 0,
-        footer: <AppSwitcher />,
+        footer: (
+          <div className="flex items-center gap-2">
+            <AppSwitcher />
+          </div>
+        ),
       }}
       links={[
         {
