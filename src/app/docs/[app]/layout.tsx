@@ -28,12 +28,16 @@ export default async function AppLayout({
           />
         ),
         url: `/docs/${app}`,
-        children: <AppSwitcher />,
       }}
       sidebar={{
         defaultOpenLevel: 0,
       }}
       links={[
+        {
+          type: 'custom',
+          children: <AppSwitcher />,
+          secondary: false,
+        },
         {
           text: '🌐 Website',
           url: 'https://selofy.com',
