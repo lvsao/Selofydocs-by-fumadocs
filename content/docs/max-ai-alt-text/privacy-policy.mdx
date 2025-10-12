@@ -8,13 +8,15 @@ import { Callout } from 'fumadocs-ui/components/callout';
 # Privacy Policy for Max AI Alt Text Optimizer
 
 **Effective Date**: January 10, 2025
-**Last Updated**: January 10, 2025
+**Last Updated**: October 12, 2025
 
 ---
 
 ## Introduction
 
 This Privacy Policy explains how Max AI Alt Text Optimizer ("the App", "we", "us", or "our") collects, uses, stores, and protects data when you use our Shopify application. We are committed to protecting your privacy and ensuring transparency about our data practices.
+
+**B2B Application Notice**: Max AI Alt Text Optimizer is a **Business-to-Business (B2B)** application designed for Shopify merchants. We only collect and process data related to store owners and store operations, NOT end customer data.
 
 By installing and using the App, you agree to the collection and use of information in accordance with this policy.
 
@@ -40,12 +42,18 @@ We collect the following information from your Shopify store:
 - **Automation settings**: Your preferences for automated optimization schedules
 - **Usage statistics**: Monthly quota usage for billing purposes
 
-### 1.4 Authentication Data
+### 1.4 Authentication and Session Data
 - **Shopify access tokens**: Encrypted offline access tokens to perform operations on your behalf
-- **Shop owner information**: Basic shop owner details for account management
+- **Session data**: We store merchant session information including:
+  - User ID (Shopify merchant ID)
+  - First name and last name (shop owner)
+  - Email address (shop owner's email)
+  - Locale and timestamps
+
+**Important**: This is **B2B (Business-to-Business)** application data. We store merchant/shop owner information, NOT end customer data.
 
 <Callout type="info">
-**We do NOT collect**: Customer personal data, order information, payment details, customer email addresses, or any other customer-identifiable information.
+**We do NOT collect**: End customer personal data, customer order information, customer payment details, customer email addresses, or any customer purchase history. All data collected is related to the store owner (merchant) only.
 </Callout>
 
 ---
@@ -118,7 +126,13 @@ To generate alt text descriptions, we send **image URLs only** to the following 
 - **Inactive accounts**: Data may be deleted 90 days after app uninstallation
 
 ### 5.2 Data Deletion
-Upon app uninstallation or account closure, you may request complete data deletion by contacting us at support@selofy.com.
+Upon app uninstallation or account closure, we automatically handle data deletion through Shopify's mandatory webhooks:
+
+- **Customer Data Requests**: We respond to GDPR data requests via `customers/data_request` webhook
+- **Customer Data Redaction**: We automatically delete merchant session data via `customers/redact` webhook
+- **Shop Data Deletion**: Complete shop data removal via `shop/redact` webhook upon app uninstallation
+
+**Manual Requests**: You may also request complete data deletion at any time by contacting us at support@selofy.com.
 
 ---
 
